@@ -1,0 +1,30 @@
+<section *ngIf="departementArray else noDepartement">
+  <nav aria-label="breadcrumb mt-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="">Régions</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Départements</li>
+    </ol>
+  </nav>
+
+  <table class="table table-dark table-hover col-6 mx-auto mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Nom du département</th>
+        <th scope="col">Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let departement of departementArray">
+        <th scope="row" id="click" routerLink="/regions/{{departement.codeRegion}}/departements/{{departement.code}}/communes">{{departement.nom}}</th>
+        <td>{{departement.code}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-dark" routerLink="/departements">Voir tout</button>
+
+</section>
+
+<ng-template #noDepartement>
+Pas de donnée sur les départements...
+</ng-template>
